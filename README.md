@@ -6,3 +6,6 @@ This is Lac's professional porfolio. It uses AWS and ReactJS.
 Brew
 Git and github
 SSH
+CSS
+Font Awesome
+Google Fonts
