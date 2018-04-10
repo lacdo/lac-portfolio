@@ -4,18 +4,15 @@ phases:
   build:
     commands:
       - echo Nohing to do yet
-    post_build:
-      commands:
-         - echo Build completed on `date`
 artifacts:
   files:
-    about.html
-    assets/*
-    gigs.html
-    .gitignore
-    images/*
-    index.html
-    instagram.html
-    README.md
-    releases.html
-    styles/*
+    - about.html
+    - assets/*
+    - gigs.html
+    - .gitignore
+    - images/*
+    - index.html
+    - instagram.html
+    - README.md
+    - releases.html
+    - styles/*
