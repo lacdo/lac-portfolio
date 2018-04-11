@@ -42,7 +42,7 @@ def lambda_handler(event, context):
         topic.publish(Subject="Dynamic Website Deployed", Message="Dynamic Website Deployed Successfully!")
         if job:
             codepipeline = boto3.client('codepipeline')
-            codepipeline.put_job_success_result(job["id"])
+            codepipeline.PutJobSuccessResult(job["id"])
     except:
         topic.publish(Subject="Dynamic Website Deployed Failed", Message="Dynamic Website Was Not Deployed Successfully!")
         raise
