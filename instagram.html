@@ -64,32 +64,70 @@
 
 					<h2>Contact Us</h2>
 
-					<form action="#" method="post">
 
-						<div class="field half first">
-							<label for="name">Name</label>
-							<input name="name" id="name" type="text" placeholder="Name">
-						</div>
-						<div class="field half">
-							<label for="email">Email</label>
-							<input name="email" id="email" type="email" placeholder="Email">
-						</div>
-						<div class="field">
-							<label for="message">Message</label>
-							<textarea name="message" id="message" rows="6" placeholder="Message"></textarea>
-						</div>
-						<ul class="actions">
-							<li><input value="Send Message" class="button alt" type="submit"></li>
-						</ul>
+					<style>
+					form > input, form > textarea, form > label {
+						display: block;
+						margin-bottom: 5px;
+					}
+					</style>
+
+					<form name="contact" method="post">
+						<label>Name</label>
+						<input type="text" name="name" />
+						<label>Subject</label>
+						<input type="text" name="subject" />
+						<label>Phone Number</label>
+						<input type="text" name="phone" />
+						<label>Message</label>
+						<textarea name="message"></textarea>
+
+						<input type="submit" name="send" value="Send Message" />
 					</form>
 
+					<!-- Contact Form Here -->
+					<script>
+						var form = document.forms["contact"];
+						form.addEventListener('submit',contact_submit,false);
+
+						function contact_submit(e) {
+							// Stop Form From Submitting
+							e.preventDefault();
+
+							// Set Initial Variables
+							var target = e.target || e.srcElement;
+							var to = 'lacvinhdo@google.com';
+							var uri = 'mailto:' + to;
+							var body = '';
+
+							// Set Form Values to Variables
+							var name = target.elements['name'].value;
+							var subject = target.elements['subject'].value;
+							var phone = target.elements['phone'].value;
+							var message = target.elements['message'].value;
+
+							// Build Body / Message with all Input Fields
+							body += message + "\r\n\r\n";
+							body += "Name: " + name + "\r\n";
+							body += "Phone Number: " + phone + "\r\n";
+
+							// Build final Mailto URI
+							uri += '?subject=' + encodeURIComponent(subject);
+							uri += '&body=' + encodeURIComponent(body);
+
+							// Open Mailto in New Window / Tab
+							window.open(uri,'_blank');
+						}
+					</script>
+
+
 					<ul class="icons">
-						<li><a href="#" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://www.facebook.com/skinnerslane/" class="icon round fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/skinners.lane/" class="icon round fa-instagram"><span class="label">Instagram</span></a></li>
 					</ul>
 
 					<div class="copyright">
-						&copy; Untitled. Design: <a href="https://www.facebook.com/skinnerslane/">Skinner's Lane</a>. Images: <a href="https://www.facebook.com/skinnerslane/">Skinner's Lane</a>.
+						&copy; Skinner's Lane - 2018: <a href="https://www.facebook.com/skinnerslane/">Skinner's Lane</a>. Images: <a href="https://www.facebook.com/skinnerslane/">Skinner's Lane</a>.
 					</div>
 
 				</div>

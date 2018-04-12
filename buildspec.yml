@@ -16,3 +16,6 @@ artifacts:
     - README.md
     - releases.html
     - styles/*
+    - buildspec.yml
+    - dynamic-lamba.py
+    
