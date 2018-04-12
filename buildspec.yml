@@ -18,4 +18,3 @@ artifacts:
     - styles/*
     - buildspec.yml
     - dynamic-lamba.py
-    
