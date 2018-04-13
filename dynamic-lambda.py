@@ -18,7 +18,7 @@ def lambda_handler(event, context):
         for nm in myzip.namelist():
             obj = myzip.open(nm)
             static_bucket.upload_fileobj(obj, nm,
-                ExtraArgs={'ContentType': 'NoneType'})
+                ExtraArgs={'ContentType': 'None-Type'})
             static_bucket.Object(nm).Acl().put(ACL='public-read')
 
     return 'Hello from Lambda'
