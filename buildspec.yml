@@ -17,4 +17,4 @@ artifacts:
     - releases.html
     - styles/*
     - buildspec.yml
-    - dynamic-lamba.py
+    
