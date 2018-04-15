@@ -2,23 +2,17 @@ import boto3
 from botocore.client import Config
 import StringIO
 import zipfile
-import mimetypes
 
-def lambda_handler(event, context):
+s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
 
-    s3 = boto3.resource('s3', config=Config(signature_version='s3v4'))
+skinnerslane_bucket= s3.Bucket('skinnerslane.com')
+build_bucket = s3.Bucket('build.skinnerslane.com')
 
-    static_bucket= s3.Bucket('static.skinnerslane.com')
-    dynamic_bucket = s3.Bucket('dynamic.skinnerslane.com')
+build_zip = StringIO.StringIO()
+build_bucket.download_fileobj('buildSkinnerslane.zip', build_zip)
 
-    dynamic_zip = StringIO.StringIO()
-    dynamic_bucket.download_fileobj('dynamicSkinner.zip', dynamic_zip)
-
-    with zipfile.ZipFile(dynamic_zip) as myzip:
-        for nm in myzip.namelist():
-            obj = myzip.open(nm)
-            static_bucket.upload_fileobj(obj, nm,
-                ExtraArgs={'ContentType': 'None-Type'})
-            static_bucket.Object(nm).Acl().put(ACL='public-read')
-
-    return 'Hello from Lambda'
+with zipfile.ZipFile(build_zip) as myzip:
+    for nm in myzip.namelist():
+        obj = myzip.open(nm)
+        skinnerslane_bucket.upload_fileobj(obj, nm)
+        skinnerslane_bucket.Object(nm).Acl().put(ACL='public-read')
