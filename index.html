@@ -6,6 +6,7 @@
 -->
 <html>
 
+
 <audio controls autoplay loop>
   <source src="assets/audioclip-1525818004.mp3">
 </audio>
@@ -42,8 +43,32 @@
 			to the full filename of your image. This is used in each section to set
 			the background image.
 		-->
-			<section id="banner" class="bg-img" data-bg="banner.jpg">
-				<div class="inner">
+			<section id="banner" class="bg-img" data-bg="
+      <div class="inner">
+        <video autoplay muted loop id="myVideo">
+          <source src="VideoPromo.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+
+
+        <script>
+        var video = document.getElementById("myVideo");
+        var btn = document.getElementById("myBtn");
+
+        function myFunction() {
+          if (video.paused) {
+            video.play();
+            btn.innerHTML = "Pause";
+          } else {
+            video.pause();
+            btn.innerHTML = "Play";
+          }
+        }
+        </script>
+      ">
+
+
+
 					<header>
 						<h1>Coming Soon...</h1>
 						<h2>24.05.2018</h2>
