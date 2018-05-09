@@ -37,7 +37,7 @@
 			to the full filename of your image. This is used in each section to set
 			the background image.
 		-->
-			<section id="banner" class="bg-img" data-bg="banner_new.jpg">
+			<section id="banner" class="bg-img" data-bg="banner.jpg">
 				<div class="inner">
 					<header>
 						<h1>Coming Soon...</h1>
@@ -45,8 +45,14 @@
 					</header>
 				</div>
 				<a href="#one" class="more">Learn More</a>
-			</section>
 
+				<audio controls loop>
+    			<source src="images/audioclip-1525818004.mp3">
+				</audio>
+			</section>
+			<audio controls loop>
+				<source src="images/audioclip-1525818004.mp3">
+			</audio>
 		<!-- One -->
 			<section id="one" class="wrapper post bg-img" data-bg="banner2.jpg">
 				<div class="inner">
@@ -179,6 +185,16 @@ http://smarturl.co/spotifydearbrighton</p>
 							    "event": "Gigs"
 							  }
 							}
+						</script>
+
+						<script>
+								var audio_file = new Audio('assets/audioclip-1525818004.mp3')
+								audio_file.addEventListener('timeupdate', function(){
+								var buffer = .44
+								if(this.currentTime > this.duration - buffer){
+									this.currentTime = 0
+									this.play()
+								}}, false);
 						</script>
 
 					<ul class="icons">
